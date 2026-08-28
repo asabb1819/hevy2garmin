@@ -2,7 +2,9 @@ name: Sync Workouts
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    # Check four times per hour, offset from peak GitHub Actions traffic.
+    # hevy2garmin still uploads only newly completed, unsynced workouts.
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch: {}
   repository_dispatch:
     types: [sync-trigger]
